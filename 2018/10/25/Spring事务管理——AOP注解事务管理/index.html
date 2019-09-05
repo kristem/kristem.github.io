@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Spring事务管理——AOP注解事务管理 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="数据库事务（简称：事务）是数据库管理系统执行过程中的一个逻辑单位，由一个有限的数据库操作序列构成。  一个数据库事务通常包含了一个序列的对数据库的读/写操作。它的存在包含有以下两个目的：  为数据库操作序列提供了一个从失败中恢复到正常状态的方法，同时提供了数据库即使在异常状态下仍能保持一致性的方法。 当多个应用程序在并发访问数据库时，可以在这些应用程序之间提供一个隔离方法，以防止彼此的操作互相干">
+<meta name="keywords" content="spring">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spring事务管理——AOP注解事务管理">
+<meta property="og:url" content="http://yoursite.com/2018/10/25/Spring事务管理——AOP注解事务管理/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="数据库事务（简称：事务）是数据库管理系统执行过程中的一个逻辑单位，由一个有限的数据库操作序列构成。  一个数据库事务通常包含了一个序列的对数据库的读/写操作。它的存在包含有以下两个目的：  为数据库操作序列提供了一个从失败中恢复到正常状态的方法，同时提供了数据库即使在异常状态下仍能保持一致性的方法。 当多个应用程序在并发访问数据库时，可以在这些应用程序之间提供一个隔离方法，以防止彼此的操作互相干">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-09-05T01:18:52.994Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Spring事务管理——AOP注解事务管理">
+<meta name="twitter:description" content="数据库事务（简称：事务）是数据库管理系统执行过程中的一个逻辑单位，由一个有限的数据库操作序列构成。  一个数据库事务通常包含了一个序列的对数据库的读/写操作。它的存在包含有以下两个目的：  为数据库操作序列提供了一个从失败中恢复到正常状态的方法，同时提供了数据库即使在异常状态下仍能保持一致性的方法。 当多个应用程序在并发访问数据库时，可以在这些应用程序之间提供一个隔离方法，以防止彼此的操作互相干">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Spring事务管理——AOP注解事务管理" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/10/25/Spring事务管理——AOP注解事务管理/" class="article-date">
+  <time datetime="2018-10-25T01:03:07.000Z" itemprop="datePublished">2018-10-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Spring事务管理——AOP注解事务管理
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>数据库事务（简称：事务）是数据库管理系统执行过程中的一个逻辑单位，由一个有限的数据库操作序列构成。</p>
+</blockquote>
+<p>一个数据库事务通常包含了一个序列的对数据库的读/写操作。它的存在包含有以下两个目的：</p>
+<blockquote>
+<p>为数据库操作序列提供了一个从失败中恢复到正常状态的方法，同时提供了数据库即使在异常状态下仍能保持一致性的方法。 当多个应用程序在并发访问数据库时，可以在这些应用程序之间提供一个隔离方法，以防止彼此的操作互相干扰。</p>
+</blockquote>
+<a id="more"></a>
+<p>当事务被提交给了DBMS（数据库管理系统），则DBMS（数据库管理系统）需要确保该事务中的所有操作都成功完成且其结果被永久保存在数据库中，如果事务中有的操作没有成功完成，则事务中的所有操作都需要被回滚，回到事务执行前的状态;同时，该事务对数据库或者其他事务的执行无影响，所有的事务都好像在独立的运行。</p>
+<h2 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h2><p>并非任意的对数据库的操作序列都是数据库事务。数据库事务拥有以下四个特性，习惯上被称之为<strong>ACID</strong>特性。</p>
+<blockquote>
+<p><strong>原子性（Atomicity）：</strong>事务作为一个整体被执行，包含在其中的对数据库的操作要么全部被执行，要么都不执行。<br><strong>一致性（Consistency）：</strong>事务应确保数据库的状态从一个一致状态转变为另一个一致状态。一致状态的含义是数据库中的数据应满足完整性约束。<br><strong>隔离性（Isolation）：</strong>多个事务并发执行时，一个事务的执行不应影响其他事务的执行。<br><strong>持久性（Durability）：</strong>已被提交的事务对数据库的修改应该永久保存在数据库中。</p>
+</blockquote>
+<p>Spring下由三种途径对事物进行管理:<strong>编程式事务管理</strong>、<strong>声明式事务管理</strong>和<strong>AOP事务管理</strong>。其中<strong>AOP事务管理</strong>又分<strong>AOP注解事务管理</strong>和<strong>AOP XML配置</strong>两种</p>
+<h2 id="AOP注解事务管理"><a href="#AOP注解事务管理" class="headerlink" title="AOP注解事务管理"></a>AOP注解事务管理</h2><h3 id="spring-xml（spring的配置文件，不一定叫spring-xml）文件中的配置："><a href="#spring-xml（spring的配置文件，不一定叫spring-xml）文件中的配置：" class="headerlink" title="spring.xml（spring的配置文件，不一定叫spring.xml）文件中的配置："></a><code>spring.xml</code>（spring的配置文件，不一定叫spring.xml）文件中的配置：</h3><p><strong>1.配置数据源（我使用的是tddl，改为自己的数据源）</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- datasource begin --&gt;</span><br><span class="line">&lt;bean id=&quot;tddlGroupDataSource&quot; class=&quot;com.taobao.tddl.jdbc.group.TGroupDataSource&quot;</span><br><span class="line">      init-method=&quot;init&quot;&gt;</span><br><span class="line">    &lt;property name=&quot;appName&quot; value=&quot;$&#123;alibaba.intl.apaas.db.app.name&#125;&quot;/&gt;</span><br><span class="line">    &lt;property name=&quot;dbGroupKey&quot; value=&quot;$&#123;alibaba.intl.apaas.db.group.key&#125;&quot;/&gt;</span><br><span class="line">&lt;/bean&gt;</span><br><span class="line">&lt;!-- datasource end --&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>2. 配置sping的事务管理</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;</span><br><span class="line">       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><br><span class="line">       xmlns:sca=&quot;http://www.springframework.org/schema/sca&quot;</span><br><span class="line">       xmlns:aop=&quot;http://www.springframework.org/schema/aop&quot;</span><br><span class="line">       xmlns:tx=&quot;http://www.springframework.org/schema/tx&quot;</span><br><span class="line">       xsi:schemaLocation=&quot;</span><br><span class="line">           http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd</span><br><span class="line">           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd</span><br><span class="line">           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd&quot;&gt; </span><br><span class="line"></span><br><span class="line">    &lt;!--  Transaction begin  --&gt;</span><br><span class="line">    &lt;tx:annotation-driven transaction-manager=&quot;transactionManager&quot; /&gt;</span><br><span class="line">    &lt;bean id=&quot;transactionManager&quot; class=&quot;org.springframework.jdbc.datasource.DataSourceTransactionManager&quot;&gt;</span><br><span class="line">        &lt;property name=&quot;dataSource&quot; ref=&quot;tddlGroupDataSource&quot; /&gt;</span><br><span class="line">    &lt;/bean&gt;</span><br><span class="line">    &lt;!-- transaction end --&gt;</span><br><span class="line"></span><br><span class="line">&lt;/beans&gt;</span><br></pre></td></tr></table></figure>
+<p><code>&lt;tx:annotation-driven transaction-manager=&quot;transactionManager&quot; /&gt;</code>这句话加上的话，在spring获取bean的时候，要使用接口！</p>
+<p><strong>3.配置SqlMapClient（我的持久层使用了ibatis，所以需要配置这个）</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean id=&quot;apaasSqlMapClient&quot; class=&quot;org.springframework.orm.ibatis.SqlMapClientFactoryBean&quot;&gt;</span><br><span class="line">        &lt;property name=&quot;configLocation&quot; value=&quot;biz/sql-map-config.xml&quot;/&gt;</span><br><span class="line">        &lt;property name=&quot;dataSource&quot; ref=&quot;tddlGroupDataSource&quot;/&gt;</span><br><span class="line">&lt;/bean&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>sql-map-config.xml的配置：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;!DOCTYPE sqlMapConfig PUBLIC &quot;-//ibatis.apache.org//DTD SQL Map Config 2.0//EN&quot;</span><br><span class="line">    &quot;http://ibatis.apache.org/dtd/sql-map-config-2.dtd&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;sqlMapConfig&gt;</span><br><span class="line">    &lt;settings cacheModelsEnabled=&quot;true&quot; enhancementEnabled=&quot;true&quot;</span><br><span class="line">        errorTracingEnabled=&quot;true&quot; lazyLoadingEnabled=&quot;true&quot; maxRequests=&quot;32&quot;</span><br><span class="line">        maxSessions=&quot;10&quot; maxTransactions=&quot;5&quot; useStatementNamespaces=&quot;true&quot; /&gt;</span><br><span class="line">    &lt;sqlMap resource=&quot;sqlmap/sqlmap-apaas-label.xml&quot; /&gt;</span><br><span class="line">    &lt;!-- &lt;sqlMap resource=&quot;sqlmap/sqlmap-apaas-label-sorce.xml&quot; /&gt; --&gt;</span><br><span class="line"></span><br><span class="line">&lt;/sqlMapConfig&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>sqlmap-apaas-label-sorce.xml配置就不写了，就是ibatis的jdbc操作。</strong></p>
+<p><strong>4.配置dao和service</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean id=&quot;appLabelDao&quot; class=&quot;com.alibaba.intl.apaas.common.monitor.dao.impl.AppLabelDaoImpl&quot;</span><br><span class="line">      parent=&quot;baseSqlMapClientDAO&quot;/&gt;</span><br><span class="line">&lt;bean id=&quot;appLabelServiceBean&quot; class=&quot;com.alibaba.intl.apaas.common.monitor.service.impl.AppLabelServiceImpl&quot;&gt;</span><br><span class="line">    &lt;property name=&quot;appLabelDao&quot;&gt;</span><br><span class="line">        &lt;ref bean=&quot;appLabelDao&quot;/&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">&lt;/bean&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="AppLabelServiceImpl的Java类的配置："><a href="#AppLabelServiceImpl的Java类的配置：" class="headerlink" title="AppLabelServiceImpl的Java类的配置："></a><code>AppLabelServiceImpl</code>的Java类的配置：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public class AppLabelServiceImpl implements AppLabelService &#123;</span><br><span class="line">    private AppLabelDao appLabelDao;</span><br><span class="line">      @Transactional</span><br><span class="line">    public Integer insertAppLabel() &#123;</span><br><span class="line">                appLabelDao.jdbcOperate1();</span><br><span class="line">                appLabelDao.jdbcOperate2();</span><br><span class="line">                appLabelDao.jdbcOperate3();</span><br><span class="line">                appLabelDao.jdbcOperate4();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里使用<code>@Transactional</code>这个注解，这个注解的原理和具体使用方式我会在别的文章里面介绍。 在方法<code>insertAppLabel</code>上添加<code>@Transactional</code>这个注解，声明该方法要在一个事务中进行处理。 这个方法一共有四个jdbc操作<code>jdbcOperate1</code>、<code>jdbcOperate2</code>、<code>jdbcOperate3</code>、<code>jdbcOperate4</code>，如果在整个<code>insertAppLabel</code>方法的任何地方抛出runtimeException，就会执行rollback。即所有操作将被回滚。</p>
+<h3 id="测试类："><a href="#测试类：" class="headerlink" title="测试类："></a>测试类：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public class AppLabelServiceImplTest &#123;</span><br><span class="line">    private static AppLabelService service;</span><br><span class="line">    @BeforeClass</span><br><span class="line">    public static void beforeClass() &#123;</span><br><span class="line">        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(&quot;classpath:biz/sca-appinfo-provider-context.xml&quot;);</span><br><span class="line">        service = (AppLabelService)context.getBean(&quot;appLabelServiceBean&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    @Test</span><br><span class="line">    public void testInsert()&#123;</span><br><span class="line">        service.insertAppLabel( );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>PS：</strong><code>service = (AppLabelService)context.getBean(&quot;appLabelServiceBean&quot;);</code>此处应该注意，一定要用<code>AppLabelService</code>这个接口，二不能用<code>AppLabelServiceImpl</code>这个实现类。 因为Spring文档中有写：<strong>Spring AOP部分使用JDK动态代理或者CGLIB来为目标对象创建代理，如果被代理的目标对象实现了至少一个接口，则会使用JDK动态代理。所有该目标类型实现的接口都将被代理。若该目标对象没有实现任何接口，则创建一个CGLIB代理。</strong></p>
+<p><strong>如果不使用AppLabelService而使用AppLabelServiceImpl的话，在执行程序的时候就会报错：classCastException</strong></p>
+<p><strong>这里，service也不能是new出来的，必须要用spring进行管理。</strong></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/10/25/Spring事务管理——AOP注解事务管理/" data-id="ck06j9yc400021wumjf7nvadt" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/spring/">spring</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/11/08/Spring-Boot的自动配置/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Spring Boot的自动配置
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/10/02/深入分析Java的序列化与反序列化/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">深入分析Java的序列化与反序列化</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java基础/">Java基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/">Spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring/">spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/素养/">素养</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Java基础/" style="font-size: 20px;">Java基础</a> <a href="/tags/Spring/" style="font-size: 10px;">Spring</a> <a href="/tags/spring/" style="font-size: 20px;">spring</a> <a href="/tags/素养/" style="font-size: 10px;">素养</a> <a href="/tags/读书笔记/" style="font-size: 15px;">读书笔记</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/09/05/Spring事-Boot的自动配置/">Spring事 Boot的自动配置</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/07/Java反射与动态代理/">Java反射与动态代理</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/05/《编写可读代码的艺术》读书笔记——代码审美/">《编写可读代码的艺术》读书笔记——代码审美</a>
+          </li>
+        
+          <li>
+            <a href="/2019/04/16/《Java基础之String源码/">Java基础之String源码</a>
+          </li>
+        
+          <li>
+            <a href="/2019/04/05/《编写可读代码的艺术》读书笔记——注释/">《编写可读代码的艺术》读书笔记——注释</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
