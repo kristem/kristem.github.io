@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>《编写可读代码的艺术》读书笔记——代码审美 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="写代码就像读书时候写作文一样，虽然试卷上没有要求字迹要多工整、篇幅要多具备艺术气息，但是不可否认的是，字迹工整、篇幅合理的作文总能拿较高的分数，屡试不爽。而好的代码规范能够提高工作效率，降低查找代码和团队交接的时间。如何让代码看起来很“养眼”呢？确切地说有三条原则：   使用一致的布局    让相似的代码看上去相似 把相关的代码行分组，形成代码块  举个坏掉的栗子：">
+<meta name="keywords" content="读书笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《编写可读代码的艺术》读书笔记——代码审美">
+<meta property="og:url" content="http://yoursite.com/2019/05/05/《编写可读代码的艺术》读书笔记——代码审美/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="写代码就像读书时候写作文一样，虽然试卷上没有要求字迹要多工整、篇幅要多具备艺术气息，但是不可否认的是，字迹工整、篇幅合理的作文总能拿较高的分数，屡试不爽。而好的代码规范能够提高工作效率，降低查找代码和团队交接的时间。如何让代码看起来很“养眼”呢？确切地说有三条原则：   使用一致的布局    让相似的代码看上去相似 把相关的代码行分组，形成代码块  举个坏掉的栗子：">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-09-05T01:13:57.520Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="《编写可读代码的艺术》读书笔记——代码审美">
+<meta name="twitter:description" content="写代码就像读书时候写作文一样，虽然试卷上没有要求字迹要多工整、篇幅要多具备艺术气息，但是不可否认的是，字迹工整、篇幅合理的作文总能拿较高的分数，屡试不爽。而好的代码规范能够提高工作效率，降低查找代码和团队交接的时间。如何让代码看起来很“养眼”呢？确切地说有三条原则：   使用一致的布局    让相似的代码看上去相似 把相关的代码行分组，形成代码块  举个坏掉的栗子：">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-《编写可读代码的艺术》读书笔记——代码审美" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/05/05/《编写可读代码的艺术》读书笔记——代码审美/" class="article-date">
+  <time datetime="2019-05-05T00:51:54.000Z" itemprop="datePublished">2019-05-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      《编写可读代码的艺术》读书笔记——代码审美
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>写代码就像读书时候写作文一样，虽然试卷上没有要求字迹要多工整、篇幅要多具备艺术气息，但是不可否认的是，字迹工整、篇幅合理的作文总能拿较高的分数，屡试不爽。而好的代码规范能够提高工作效率，降低查找代码和团队交接的时间。如何让代码看起来很“养眼”呢？确切地说有三条原则：</p>
+<blockquote>
+<ul>
+<li>使用一致的布局</li>
+</ul>
+</blockquote>
+<ul>
+<li>让相似的代码看上去相似</li>
+<li>把相关的代码行分组，形成代码块</li>
+</ul>
+<p>举个坏掉的栗子：</p>
+<a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">class StatsKeeper&#123;</span><br><span class="line">public:</span><br><span class="line">// A class for keeping track of a series of doubles</span><br><span class="line">   void Add(double d);    // and methods for quick statistics about them</span><br><span class="line"> private:  int count;    /* how many so   far</span><br><span class="line">*/private:    double Average();</span><br><span class="line">list&lt;double&gt;</span><br><span class="line">  past_items</span><br><span class="line">         ;double maximum;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>再举一个好的栗子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">// A class for keeping track of a series of doubles</span><br><span class="line">// and methods for quick statistics about them</span><br><span class="line">class StatsKeeper&#123;</span><br><span class="line">  public:</span><br><span class="line">    void Add(double d);</span><br><span class="line">    double Average();</span><br><span class="line"></span><br><span class="line">  private:</span><br><span class="line">    list&lt;double&gt; past_items;</span><br><span class="line">    int count;  // how many so far</span><br><span class="line"></span><br><span class="line">    double minimum;</span><br><span class="line">    double maximum;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>嗯，看到这里你应该才发现第一个例子中少写了一个**<figure class="highlight plain"><figcaption><span>minimum;```**，下面是一些具体操作的要点。</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&gt; </span><br><span class="line"></span><br><span class="line">1. 通过换行来保持一致和紧凑</span><br><span class="line">2. 在需要时使用列对齐</span><br><span class="line">3. 选一个有意义的顺序，并始终一致地使用</span><br><span class="line">4. 把声明按块组织起来</span><br><span class="line">5. 把代码分成段落</span><br><span class="line">6. 用方法来整理不规则的东西</span><br><span class="line">7. 个人风格与一致性</span><br><span class="line"></span><br><span class="line">##### 1. 通过换行来保持一致和紧凑</span><br><span class="line"></span><br><span class="line">有的公司编码规范中有明确规定列字数限制，例如Google是80或100，超过规定都必须自动换行。但除此之外，还有一些没有超过的但也期望程序员能选择换行的情况。举个例子：</span><br></pre></td></tr></table></figure></p>
+<p>public class PerformanceTester{<br>  public static final TcpConnectionSimulator wifi =  new TcpConnectionSimulator(<br>    500, /<em> kbps </em>/<br>    80, /<em>millisecs latency </em>/<br>    200, /<em> jitter </em>/<br>    1 /<em> packet loss % </em>/ );</p>
+<p>  public static final  TcpConnectionSimulator t3_fiber =<br>    new TcpConnectionSimulator(<br>      4500, /<em> kbps </em>/<br>      10, /<em>millisecs latency </em>/<br>      0, /<em> jitter </em>/<br>      0 /<em> packet loss % </em>/ );</p>
+<p>  public static final  TcpConnectionSimulator cell = new TcpConnectionSimulator(<br>    100, /<em> kbps </em>/<br>    400, /<em>millisecs latency </em>/<br>    250, /<em> jitter </em>/<br>    5 /<em> packet loss % </em>/ );<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">虽然都是定义一个```TcpConnectionSimulator ```对象，但t3_fiber乍一看和它的邻居并不一样，这显然违反了“让相似的代码看上去相似”原则。修改过后是这样的：</span><br></pre></td></tr></table></figure></p>
+<p>public class PerformanceTester{<br>  public static final TcpConnectionSimulator wifi =<br>    new TcpConnectionSimulator(<br>      500, /<em> kbps </em>/<br>      80, /<em>millisecs latency </em>/<br>      200, /<em> jitter </em>/<br>      1 /<em> packet loss % </em>/ );</p>
+<p>  public static final  TcpConnectionSimulator t3_fiber =<br>    new TcpConnectionSimulator(<br>      4500, /<em> kbps </em>/<br>      10, /<em>millisecs latency </em>/<br>      0, /<em> jitter </em>/<br>      0 /<em> packet loss % </em>/ );</p>
+<p>  public static final  TcpConnectionSimulator cell =<br>    new TcpConnectionSimulator(<br>      100, /<em> kbps </em>/<br>      400, /<em>millisecs latency </em>/<br>      250, /<em> jitter </em>/<br>      5 /<em> packet loss % </em>/ );<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">当然也可以把注释搬到上面去，毕竟同样的注释写了三遍就要考虑“重构”了。</span><br></pre></td></tr></table></figure></p>
+<p>public class PerformanceTester{<br>   // TcpConnectionSimulator(thoughput, latency, jetter, packet_loss)<br>   //                         [kbps]     [ms]     [ms]    [percent]<br>  public static final  TcpConnectionSimulator cell =<br>    new TcpConnectionSimulator(500,80, 200, 1);</p>
+<p>  public static final  TcpConnectionSimulator cell =<br>    new TcpConnectionSimulator(4500, 10, 0, 0);</p>
+<p>  public static final  TcpConnectionSimulator cell =<br>    new TcpConnectionSimulator(100, 400, 250, 5);<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">------</span><br><span class="line"></span><br><span class="line">##### 2.在需要的时候使用列对齐</span><br><span class="line"></span><br><span class="line">整齐的边和列让读者可更轻松的浏览文本，有时候可以选择借用“列对齐”来让代码易读。例如：</span><br></pre></td></tr></table></figure></p>
+<p>CherkFullName(“Doug Adams” , “Mr. Douglas Adams”  , “”);<br>CherkFullName(“Jake Brown” , “Mr. Jake Brown III” , “”);<br>CherkFullName(“No Such Guy”, “”                   , “no match found”);<br>CherkFullName(“John”       , “”                   , “more than one result”);<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">就像Google的代码规范中并不提倡这样的写法一样，笔者也不建议使用这种风格，因为一旦方法中某个参数需要修改，那么你又要花很多时间去排序。但是下面的情况可适当使用：</span><br></pre></td></tr></table></figure></p>
+<h1 id="Extract-POST-parameters-to-local-variables"><a href="#Extract-POST-parameters-to-local-variables" class="headerlink" title="Extract POST parameters to local variables"></a>Extract POST parameters to local variables</h1><p>details  = request.POST.get(‘details’);<br>location = request.POST.get(‘location’);<br>phone    = equest.POST.get(‘phone’);<br>email    = request.POST.get(‘email’);<br>url      = request.POST.get(‘url’);<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Wait!第四行是不是少了点什么？？？</span><br><span class="line"></span><br><span class="line">------</span><br><span class="line"></span><br><span class="line">##### 3. 选一个有意义的顺序，始终一致地使用</span><br><span class="line"></span><br><span class="line">在很多时候，代码的顺序不会影响其正确性，例如上文五个变量的定义可以写成任意顺序。在这种情况下，不要随机排序，把他们按有意义的方式排序会有帮助。以下是一些排序的原则：</span><br><span class="line"></span><br><span class="line">&gt; - 让变量的顺序与对应的HTML表单中&lt;input&gt;字段的顺序相匹配。</span><br><span class="line"></span><br><span class="line">- 从“最重要”到“最不重要”排序。</span><br><span class="line">- 按字母顺序排序</span><br><span class="line"></span><br><span class="line">一旦你采用了某种排序规则，就要在代码中始终如一的遵循它。</span><br><span class="line"></span><br><span class="line">------</span><br><span class="line"></span><br><span class="line">##### 4.把声明按块组织起来</span><br><span class="line"></span><br><span class="line">由于大脑会很自然地按照分组和层次结构来思考，因此可以通过按块组织方式来使读者更快速的理解你的代码。</span><br><span class="line">举个例子：</span><br></pre></td></tr></table></figure></p>
+<p>class FrontendServer{<br>  public:<br>    FrontendServer();<br>    void ViewProfile(HttpRequest<em> request);<br>    void OpenDatabase(String location, String user);<br>    void SaveProfile(HttpRequest</em> request);<br>    String ExtractQueryParam(HttpRequest<em> request, String param);<br>    void ReplyOk(HttpRequest</em> request, String html);<br>    void FindFriends(HttpRequest<em> request);<br>    void ReplyNotFound(HttpRequest</em> request, String error);<br>    void CloseDatabase(String location);<br>    ~FrontendServer();<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">作为读者，要想读懂代码，恐怕你会选择先把它们分成不同的组，所以写这段代码的程序员不妨先将它们按块组织在一起，并加上适当的注释，这样代码的可读性将大大提高。</span><br></pre></td></tr></table></figure></p>
+<p>class FrontendServer{<br>  public:<br>    FrontendServer();<br>    ~FrontendServer();</p>
+<pre><code>// Handlers
+void ViewProfile(HttpRequest* request);
+void SaveProfile(HttpRequest* request);
+void FindFriends(HttpRequest* request);
+
+// Request/Reply Utilities
+String ExtractQueryParam(HttpRequest* request, String param);
+void ReplyOk(HttpRequest* request, String html);
+void ReplyNotFound(HttpRequest* request, String error);
+
+//Database Helpers
+void OpenDatabase(String location, String user);
+void CloseDatabase(String location);
+</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">------</span><br><span class="line"></span><br><span class="line">##### 5. 把代码分成段落</span><br><span class="line"></span><br><span class="line">字面文字分成段落是由于以下几个原因：</span><br><span class="line"></span><br><span class="line">&gt; - 它是一种把相似的想法放在一起并与其他想法分开的方法。</span><br><span class="line"></span><br><span class="line">- 它提供了可见的“脚印”，如果没有它，会很容易找不到你读到哪里了。</span><br><span class="line">- 它便于段落之间的导航。</span><br><span class="line"></span><br><span class="line">出于同样的原因，代码也应该分段，并为每一个段落加上一条总结性的注释。</span><br></pre></td></tr></table></figure></p>
+<p>def suggust_new_friends(user, emaii_password):</p>
+<pre><code># Get the user&apos;s friends&apos; email addresses
+friends = user.friends();
+friend_emails = set(f.email for f in frends)
+
+# Import all email addresses from this user&apos;s email account.
+contacts = import_contacts(user.email, email_password)
+contact_emails = set(c.email for c in contracts)
+
+# Find matching users that they aren&apos;t aleady friends with.
+non_friend_emails = contact_email - friend_emails
+suggested_friends = User.object.select(email_in = non_friend_emails)
+
+# Display these lists on the page
+display[&apos;user&apos;] = user
+display[&apos;friends&apos;] = friends
+display[&apos;suggested_friends&apos;] = suggested_friends
+
+return render(&quot;suggested_friends.html&quot;, display)
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">------</span><br><span class="line"></span><br><span class="line">##### 6. 用方法来整理不规则的东西</span><br><span class="line"></span><br><span class="line">假设有一个个人数据库，它提供了下面这个函数：</span><br></pre></td></tr></table></figure>
+<p>// Turn a partial_name like “Doug Adams “ into “Mr. Douglas Adams”.<br>// If not possible, ‘error’ is filled with an explannation.<br>String ExpandFullName(DatabaseConnection dc, String patial_name, String* error);<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">并且提供一系列的例子来测试：</span><br></pre></td></tr></table></figure></p>
+<p>DatabaseConnection database_connection;<br>string error;<br>assert(ExpandFullName(database_connection, “Doug Adams”, &amp;error) == “Mr. Douglas Adams”);<br>assert(error == “”);<br>assert(ExpandFullName(database_connection, “Jake Brown”, &amp;error) == “Mr. Jacob Brown III”);<br>assert(error == “”);<br>assert(ExpandFullName(database_connection, “No Such Guy”, &amp;error) == “”);<br>assert(error == “no match found”);<br>assert(database_connection, “John”, &amp;error) == “”);<br>assert(error == “more than one result”);<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">这段代码其实看起来并不“养眼”，因为它没有换行，也没有一致的风格。但更大的问题在于有很多重复的串，例如“assert(ExpandFullName(database_connection,…”, 其中还有很多“error”。要想改进这段代码，可以为它们添加一个辅助方法。就像：</span><br></pre></td></tr></table></figure></p>
+<p>CherkFullName(“Doug Adams”, “Mr. Douglas Adams”, “”);<br>CherkFullName(“Jake Brown”, “Mr. Jake Brown III”, “”);<br>CherkFullName(“No Such Guy”, “”, “no match found”);<br>CherkFullName(“John”, “”, “more than one result”);<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">很明显这里有4个测试，每个使用了不同的参数，并把所有的“脏活”都放在CherkFullName()中：</span><br></pre></td></tr></table></figure></p>
+<p>void CherkFullName(String partial_name,<br>                   String expected_full_name,<br>                   String expected_error) {<br>//database_connection is now a class member<br>String error;<br>String full_name = ExpandFullName(database_connection, partial_name, &amp;error);<br>assert(error == expected_error);<br>assert(full_name == expected_full_name);<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">------</span><br><span class="line"></span><br><span class="line">##### 7. 个人风格与一致性</span><br><span class="line"></span><br><span class="line">最后想说的是一些个人的编程风格，例如大括号该放在哪里：</span><br></pre></td></tr></table></figure></p>
+<p>public void function<br>{<br>    …<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">还是：</span><br></pre></td></tr></table></figure></p>
+<p>public void function {<br>    …<br>}<br><code>`</code></p>
+<p>又比如说”Tabs versus Space” ，笔者的建议是按照团队定好的风格来写，只采取一种，至于是采取哪一种，那就见仁见智了。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/05/05/《编写可读代码的艺术》读书笔记——代码审美/" data-id="ck05zzdau000f4sumn4zeamtn" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/09/05/Java反射与动态代理/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Java反射与动态代理
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/02/16/Java基础之String源码/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Java基础之String源码</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java基础/">Java基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/">Spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring/">spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/素养/">素养</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Java基础/" style="font-size: 20px;">Java基础</a> <a href="/tags/Spring/" style="font-size: 10px;">Spring</a> <a href="/tags/spring/" style="font-size: 20px;">spring</a> <a href="/tags/素养/" style="font-size: 10px;">素养</a> <a href="/tags/读书笔记/" style="font-size: 15px;">读书笔记</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/09/05/Java反射与动态代理/">Java反射与动态代理</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/05/《编写可读代码的艺术》读书笔记——代码审美/">《编写可读代码的艺术》读书笔记——代码审美</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/16/Java基础之String源码/">Java基础之String源码</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/05/《编写可读代码的艺术》读书笔记——注释/">《编写可读代码的艺术》读书笔记——注释</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/26/程序员的职业素养/">程序员的职业素养</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
