@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Spring的事务管理机制 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Spring对事务管理的支持与EJB类似，Spring提供了对编码式和声明式事务管理的支持。但是，Spring对事务管理的能力远远超过EJB。这里就不详细介绍编码式事务和声明式事务的区别了。有兴趣的读者可以自行Google。 Spring对事务管理是通过事务管理器来实现的。Spring提供了许多内置事务管理器实现：">
+<meta name="keywords" content="spring">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spring的事务管理机制">
+<meta property="og:url" content="http://yoursite.com/2018/11/26/Spring的事务管理机制/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Spring对事务管理的支持与EJB类似，Spring提供了对编码式和声明式事务管理的支持。但是，Spring对事务管理的能力远远超过EJB。这里就不详细介绍编码式事务和声明式事务的区别了。有兴趣的读者可以自行Google。 Spring对事务管理是通过事务管理器来实现的。Spring提供了许多内置事务管理器实现：">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://www.hollischuang.com/wp-content/uploads/2016/05/25161631_bmq3.png">
+<meta property="og:image" content="http://www.hollischuang.com/wp-content/uploads/2016/05/20160325003448793.png">
+<meta property="og:updated_time" content="2019-09-05T01:11:30.550Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Spring的事务管理机制">
+<meta name="twitter:description" content="Spring对事务管理的支持与EJB类似，Spring提供了对编码式和声明式事务管理的支持。但是，Spring对事务管理的能力远远超过EJB。这里就不详细介绍编码式事务和声明式事务的区别了。有兴趣的读者可以自行Google。 Spring对事务管理是通过事务管理器来实现的。Spring提供了许多内置事务管理器实现：">
+<meta name="twitter:image" content="http://www.hollischuang.com/wp-content/uploads/2016/05/25161631_bmq3.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Spring的事务管理机制" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/11/26/Spring的事务管理机制/" class="article-date">
+  <time datetime="2018-11-26T01:06:50.000Z" itemprop="datePublished">2018-11-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Spring的事务管理机制
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Spring对事务管理的支持"><a href="#Spring对事务管理的支持" class="headerlink" title="Spring对事务管理的支持"></a>Spring对事务管理的支持</h2><p>与EJB类似，Spring提供了对<code>编码式</code>和<code>声明式</code>事务管理的支持。但是，Spring对事务管理的能力远远超过EJB。这里就不详细介绍编码式事务和声明式事务的区别了。有兴趣的读者可以自行Google。</p>
+<p>Spring对事务管理是通过事务管理器来实现的。Spring提供了许多内置事务管理器实现：</p>
+<a id="more"></a>
+<table>
+<thead>
+<tr>
+<th>事务管理器(<code>org.springframework.*</code>)</th>
+<th>使用场景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>DataSourceTransactionManager</code></td>
+<td>数据源事务管理器，提供对单个<code>javax.sql.DataSource</code>事务管理，用于Spring JDBC抽象框架、iBATIS或MyBatis框架的事务管理；</td>
+</tr>
+<tr>
+<td><code>JdoTransactionManager</code></td>
+<td>提供对单个<code>javax.jdo.PersistenceManagerFactor</code>y事务管理，用于集成JDO框架时的事务管理；</td>
+</tr>
+<tr>
+<td><code>JpaTransactionManager</code></td>
+<td>提供对单个<code>javax.persistence.EntityManagerFactory</code>事务支持，用于集成JPA实现框架时的事务管理；</td>
+</tr>
+<tr>
+<td><code>HibernateTransactionManager</code></td>
+<td>提供对单个<code>org.hibernate.SessionFactory</code>事务支持，用于集成Hibernate框架时的事务管理；该事务管理器只支持Hibernate3+版本，且Spring3.0+版本只支持Hibernate 3.2+版本；</td>
+</tr>
+<tr>
+<td><code>JtaTransactionManager</code></td>
+<td>提供对分布式事务管理的支持，并将事务管理委托给Java EE应用服务器事务管理器；</td>
+</tr>
+<tr>
+<td><code>OC4JjtaTransactionManager</code></td>
+<td>Spring提供的对OC4J10.1.3+应用服务器事务管理器的适配器，此适配器用于对应用服务器提供的高级事务的支持；</td>
+</tr>
+<tr>
+<td><code>WebSphereUowTransactionManager</code></td>
+<td>Spring提供的对WebSphere 6.0+应用服务器事务管理器的适配器，此适配器用于对应用服务器提供的高级事务的支持；</td>
+</tr>
+<tr>
+<td><code>WebLogicJtaTransactionManager</code></td>
+<td>Spring提供的对WebLogic 8.1+应用服务器事务管理器的适配器，此适配器用于对应用服务器提供的高级事务的支持。</td>
+</tr>
+</tbody>
+</table>
+<p><img src="http://www.hollischuang.com/wp-content/uploads/2016/05/25161631_bmq3.png" alt="transaction-managers"></p>
+<p>以上就是Spring中支持使用的事务管理器，一般我们比较常用的就是<code>HibernateTransactionManager</code>和<code>DataSourceTransactionManager</code>。我们在使用事务的时候要声明要使用哪种事务管理器。如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean id=&quot;transactionManager&quot; class=&quot;org.springframework.jdbc.datasource.DataSourceTransactionManager&quot;&gt;</span><br><span class="line">    &lt;property name=&quot;dataSource&quot; ref=&quot;dataSource&quot; /&gt;</span><br><span class="line">&lt;/bean&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="事务属性"><a href="#事务属性" class="headerlink" title="事务属性"></a>事务属性</h2><p>spring中，声明事务是通过事务属性来定义的。事务属性描述了事务策略如何应用到方法上事务属性包含5个方面：</p>
+<blockquote>
+<p>传播行为</p>
+<p>隔离级别</p>
+<p>回滚规则</p>
+<p>事务超时</p>
+<p>是否只读</p>
+</blockquote>
+<p><img src="http://www.hollischuang.com/wp-content/uploads/2016/05/20160325003448793.png" alt="transaction-property"></p>
+<p>这里简单介绍一下这五个属性。</p>
+<h3 id="传播行为"><a href="#传播行为" class="headerlink" title="传播行为"></a>传播行为</h3><p>传播行为定义了客户端与被调用方法之间的事务边界，即传播规则回答了这样的一个问题，新的事务应该被启动还是挂起，或者方法是否要在事务环境中运行。（后面会有单独的文章介绍该属性）</p>
+<h3 id="隔离级别"><a href="#隔离级别" class="headerlink" title="隔离级别"></a>隔离级别</h3><p>隔离级别定义了一个事务可能受其他并发事务影响的程度。多事务并发可能会导致脏读、幻读、不可重复读等各种读现象。(具体参考：<a href="http://www.hollischuang.com/archives/900" target="_blank" rel="noopener">数据库的读现象浅析</a>)</p>
+<blockquote>
+<p>ISOLATION_DEFAULT:使用后端数据库默认的规则</p>
+<p>ISOLATION_READ_UNCOMMITTED:允许读取尚未提交的数据变更，可能会导致脏读，幻读或不可重复读</p>
+<p>ISOLATION_READ_COMMITTED:允许读取并发事务已经提交的数据，可以防止脏读，但是幻读或不可重复读仍有可能发生</p>
+<p>ISOLATION_REPEATABLE_READ:对同意字段的多次读取结果是一致的，除非数据是被本事务自己所修改，看阻止脏读和不可重复读，但幻读仍有可能发生</p>
+<p>ISOLATIOM_SERIALIZABLE:完全服从ACID的隔离级别，确保阻止脏读，不可重复读以及幻读，这是最慢的数据隔离级别</p>
+</blockquote>
+<p>（具体参考：<a href="http://www.hollischuang.com/archives/943" target="_blank" rel="noopener">深入分析事务的隔离级别</a>）</p>
+<h3 id="是否只读"><a href="#是否只读" class="headerlink" title="是否只读"></a>是否只读</h3><p>如果事务只对后端的数据库进行读操作，数据库可以利用事务ID只读特性来进行一些特定的优化。通过将事务设置为只读，你就可以给数据库一个机会，让他应用它认为合适的优化措施。因为是否只读是在事务启动的时候由数据库实施的，所以只有对那些具备可能启动一个新事务的传播行为（<code>PROPAGATION_REQUIRED</code>,<code>PROPAGATION_REQUIRED_NEW</code>,<code>PROPAGATION_NESTED</code>）的方法来说，才有意义。</p>
+<h3 id="事务超时"><a href="#事务超时" class="headerlink" title="事务超时"></a>事务超时</h3><p>为了使应用程序很好地运行，事务不能运行太长时间。因为超时时钟会在事务开始时启动，所以只有对那些具备可能启动一个新事务的传播行为（<code>PROPAGATION_REQUIRED</code>,<code>PROPAGATION_REQUIRED_NEW</code>,<code>PROPAGATION_NESTED</code>）的方法来说，才有意义。</p>
+<h3 id="事务回滚"><a href="#事务回滚" class="headerlink" title="事务回滚"></a>事务回滚</h3><p>事务回滚规则定义了哪些异常会导致事务回滚而哪些不会。默认情况下，事务只有在遇到运行时期异常才回滚，而在遇到检查型异常时不会回滚。</p>
+<h3 id="配置方式"><a href="#配置方式" class="headerlink" title="配置方式"></a>配置方式</h3><p>事务属性的配置方式通过以下关键字来指定：</p>
+<table>
+<thead>
+<tr>
+<th>关键字</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>isolation</td>
+<td>指定事务的隔离级别</td>
+</tr>
+<tr>
+<td>propagation</td>
+<td>定义事务的传播规则</td>
+</tr>
+<tr>
+<td>read-only</td>
+<td>指定事务为只读</td>
+</tr>
+<tr>
+<td>rollback-forno-rollback-for</td>
+<td>rollback-for指定事务对哪些检查型异常应当回滚而不提交no-rollback-for指定事务对哪些异常应当继续执行而不回滚</td>
+</tr>
+<tr>
+<td>timeout</td>
+<td>对于长时间运行的事务定义超时时间</td>
+</tr>
+</tbody>
+</table>
+<p>XML中事务属性的配置方式如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;tx:advice id=&quot;txAdvice&quot; transactionmanager=&quot;transactionManager&quot;&gt;</span><br><span class="line">        &lt;tx:attributes&gt;</span><br><span class="line">            &lt;tx:method name=&quot;*&quot; propagation=&quot;REQUIRED&quot; read-only=&quot;true&quot;/&gt;</span><br><span class="line">        &lt;/tx:attributes&gt;</span><br><span class="line">&lt;/tx:advice&gt;</span><br></pre></td></tr></table></figure>
+<p>注解中事务属性的配置方式如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@Transaction(propagation=Propagation. REQUIRED,readOnly=true)</span><br><span class="line">public void add(String username)&#123;</span><br><span class="line">    //...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>事务是企业应用开发中很重要的组成部分，他让软件变得更加健壮。他保证了全有或全无的操作。</p>
+<p>Spring同时支持编码式和声明式事务管理，无论使用哪种方式进行事务管理，都应该知道与事务相关的五个属性。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/11/26/Spring的事务管理机制/" data-id="ck05zwsx20004gkum0yt28cjv" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/spring/">spring</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/12/16/使用反射获取Spring的Bean/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          使用反射获取Spring的Bean
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/11/08/Spring-Boot的自动配置/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Spring Boot的自动配置</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java基础/">Java基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/">Spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring/">spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/素养/">素养</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Java基础/" style="font-size: 20px;">Java基础</a> <a href="/tags/Spring/" style="font-size: 10px;">Spring</a> <a href="/tags/spring/" style="font-size: 20px;">spring</a> <a href="/tags/素养/" style="font-size: 10px;">素养</a> <a href="/tags/读书笔记/" style="font-size: 15px;">读书笔记</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/09/05/Java反射与动态代理/">Java反射与动态代理</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/05/《编写可读代码的艺术》读书笔记——代码审美/">《编写可读代码的艺术》读书笔记——代码审美</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/16/Java基础之String源码/">Java基础之String源码</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/05/《编写可读代码的艺术》读书笔记——注释/">《编写可读代码的艺术》读书笔记——注释</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/26/程序员的职业素养/">程序员的职业素养</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
